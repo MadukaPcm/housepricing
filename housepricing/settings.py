@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-hf6s^rv)c$rp9-ww*tcguqv^ba^w0hae%=za+9qsuvajualigy
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#predictive model....
+MODELS = os.path.join(BASE_DIR, 'model')
 
 
 # Application definition

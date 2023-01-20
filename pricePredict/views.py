@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 import pickle
+from django.conf import settings
+import os
 
 from model import *
 import numpy as np
@@ -29,9 +31,19 @@ def PredictionPageView(request):
         except Exception as e:
             print(e)
         
+        #loading the trained model file from the folder. called Model.
         try:
-            filename = 'model/my_model.pkl'
-            get_my_model = pickle.load(open(filename, 'rb'))
+            path_file = os.path.join(settings.MODELS, 'my_model.pkl')
+            with open(path_file, 'rb') as pickled:
+                get_my_model = pickle.load(pickled)  
+        except Exception as e:
+            print(e)
+        
+        try:
+            # filename = 'model/my_model.pkl'
+            # get_my_model = pickle.load(open(filename, 'rb'))
+            # get_my_model = housepricing.load("model/my_model.pkl")
+            # get_my_model = pickle.load('my_model.pkl','rb')
             pred = get_my_model.predict(predict_data)
             pred = round(pred[0])
         except Exception as e:
