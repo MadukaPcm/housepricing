@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>predict your house seeling price.</title>
+	<meta name="description" content="In this tutorial we are going to tell you how you can create HTML & CSS Registration form template. Lets have a look the demo of this user form and download the source code." />
+    <meta name="author" content="Codeconvey" />
+    <!--Only for demo purpose - no need to add.-->
+    <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+
+    <style>
+        .main{
+            position:fixed;
+            top:120px;
+            left:410px;
+            width:500px;
+            background-color:gainsboro;
+            align-items:center;
+            border-radius:5%;
+        }
+        div{
+            padding:10px;
+        }
+        input[type=submit]{
+            background-color:green;
+            color:white;
+            cursor:pointer;
+            padding: 10px 24px;
+        }
+        body{
+            {% comment %} background-image: url("{% static 'img/housing.jpg' %}"); {% endcomment %}
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+		
+<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1 style="color:black;">WELCOME, PREDICT THE HOUSE PRICE</h1>	
+				<h2 style="color:black;">Done by: KESSI Frank Maduka [Beng19COE-DIT]</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="cclogin simple">
+                	<h2 style="color:black;">Fill The Form Below</h2>
+                	<form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-2" style="background-color:Bisque;, color:black;">
+                                <p style="color:black"><b>AVG. area icome</b></p>
+                                <input type="text" name="n1" placeholder="30,XXX - 90,XXX" required>
+                            </div>
+                            <div class="col-sm-4" style="background-color:DarkSeaGreen;, color:black">
+                                <p style="color:black"><b>AVG. area house age</b></p>
+                                <input type="text" name="n2" placeholder="3 - 10+" required>
+                            </div>
+                            <div class="col-sm-4" style="background-color:LightPink;, color:black">
+                                <p style="color:black"><b>AVG. area number of rooms</b></p>
+                                <input type="text" name="n3" placeholder="3 - 10+" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4" style="background-color:Turquoise;">
+                                <p style="color:black"><b>AVG, Area number of Bedrooms</b></p>
+                                <input type="text" name="n4" placeholder="3 - 10" required>
+                            </div>
+                            <div class="col-sm-4" style="background-color:RosyBrown;">
+                                <p style="color:black"><b>AVG. Area of Population</b></p>
+                                <input type="text" name="n5" placeholder="10.XXX - 90,XXX" required>
+                            </div>
+                        </div>
+
+                        <hr style="color:green;">
+                        <div class="row">
+                            <input type="submit" value="PREDICT">
+                        </div>
+                  </form>
+
+                  {% if request.method == "POST" %}
+                  <div class="row">
+                    {% if result %}
+                    <p><b><u>{{ result }}</u></b></p>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                </div>
+		</div>
+    </div>
+</section>
+
+	</body>
+</html>
