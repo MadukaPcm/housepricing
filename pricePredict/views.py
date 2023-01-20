@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-import joblib
 import pickle
 
 from model import *
