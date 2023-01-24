@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib import messages
 import pickle
 from django.conf import settings
 import os
@@ -17,6 +18,7 @@ import numpy as np
 # Create your views here.
 def PredictionPageView(request):
     price = ""
+    errormsg = "Entered value is out or range."
     
     if request.method == "POST":
         try:
@@ -38,6 +40,10 @@ def PredictionPageView(request):
                 get_my_model = pickle.load(pickled)  
         except Exception as e:
             print(e)
+
+        if var3 < var4:
+            messages.info(request,'The bedroom number should be \nLess than total number of rooms')
+            return redirect('PredictionPage_url')
         
         try:
             # filename = 'model/my_model.pkl'
@@ -50,7 +56,6 @@ def PredictionPageView(request):
             print(e)
 
         try:
-            errormsg = "Entered value is out or range."
             pric = "The house predicted price is Tsh: "+str(pred)+"/="
             if pred > 0:
                 price = pric

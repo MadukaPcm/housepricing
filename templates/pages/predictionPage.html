@@ -59,26 +59,26 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-sm-2" style="background-color:Bisque;, color:black;">
-                                <p style="color:black"><b>AVG. area icome</b></p>
+                                <p style="color:black"><b>Area icome</b></p>
                                 <input type="text" name="n1" placeholder="30,XXX - 90,XXX" required>
                             </div>
                             <div class="col-sm-4" style="background-color:DarkSeaGreen;, color:black">
-                                <p style="color:black"><b>AVG. area house age</b></p>
+                                <p style="color:black"><b>Area house age</b></p>
                                 <input type="text" name="n2" placeholder="3 - 10+" required>
                             </div>
                             <div class="col-sm-4" style="background-color:LightPink;, color:black">
-                                <p style="color:black"><b>AVG. area number of rooms</b></p>
-                                <input type="text" name="n3" placeholder="3 - 10+" required>
+                                <p style="color:black"><b>Area total number of rooms</b></p>
+                                <input type="text" name="n3" placeholder="3 - 10" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-4" style="background-color:Turquoise;">
-                                <p style="color:black"><b>AVG, Area number of Bedrooms</b></p>
-                                <input type="text" name="n4" placeholder="3 - 10" required>
+                                <p style="color:black"><b>Area number of Bedrooms</b></p>
+                                <input type="text" name="n4" placeholder="1 - 8" required>
                             </div>
                             <div class="col-sm-4" style="background-color:RosyBrown;">
-                                <p style="color:black"><b>AVG. Area of Population</b></p>
+                                <p style="color:black"><b>Area of Population</b></p>
                                 <input type="text" name="n5" placeholder="10.XXX - 90,XXX" required>
                             </div>
                         </div>
@@ -89,6 +89,14 @@
                         </div>
                   </form>
 
+                  {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+
                   {% if request.method == "POST" %}
                   <div class="row">
                     {% if result %}
@@ -96,6 +104,7 @@
                     {% endif %}
                   </div>
                   {% endif %}
+
                 </div>
 		</div>
     </div>
