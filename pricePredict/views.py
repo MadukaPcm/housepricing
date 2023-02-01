@@ -41,9 +41,12 @@ def PredictionPageView(request):
         except Exception as e:
             print(e)
 
-        if var3 < var4:
-            messages.info(request,'The bedroom number should be \nLess than total number of rooms')
-            return redirect('PredictionPage_url')
+        try:
+            if var3 < var4:
+                messages.info(request,'The bedroom number should be \nLess than total number of rooms')
+                return redirect('PredictionPage_url')
+        except Exception as e:
+            print(e)
         
         try:
             # filename = 'model/my_model.pkl'
